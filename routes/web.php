@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProductAjaxController;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +30,9 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::resource('products-ajax-crud', ProductAjaxController::class);
+Route::resource('product', ProductController::class)->except(['update', 'destroy']);
+
+Route::post('/product/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::post('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');

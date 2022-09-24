@@ -48,6 +48,8 @@
         @endif
     @endif
 
+    @yield('page_plugins_css')
+
     {{-- Custom Stylesheets (post AdminLTE) --}}
     @yield('adminlte_css')
 
@@ -103,6 +105,10 @@
             <livewire:scripts />
         @endif
     @endif
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
+
+    @yield('page_plugins_js')
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
